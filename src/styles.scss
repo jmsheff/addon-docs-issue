@@ -1,0 +1,24 @@
+@import './helpers';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  @include theme();
+}
+
+// :root[data-theme="dark"] {}
+
+body {
+  font-size: 16px;
+  background: var(--bg-2);
+  // margin: 0;
+  font-family: 'Inter', sans-serif,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}

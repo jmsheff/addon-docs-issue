@@ -1,0 +1,67 @@
+@import '../helpers';
+
+$colors: primary, red, orange, yellow, green, blue, purple, black;
+
+.button {
+    @include transition;
+    border: none;
+    font-size: $fs;
+    padding: $p-sm;
+    border-radius: $r-sm;
+    font-weight: $semi;
+    line-height: 1.5;
+    cursor: pointer;
+
+    svg, .loader {
+        height: 1.5em;
+        vertical-align: top;
+        margin: 0 $m-sm 0 0;
+    }
+
+    &:focus {
+        @include focus;
+    }
+}
+
+@each $color in $colors {
+    .glass-#{$color} {
+        background: var(#{unquote("--#{$color}-glass")});
+        color: var(#{unquote("--#{$color}")});
+        &:hover:not(:disabled) {
+            color: var(#{unquote("--#{$color}-hover")});
+            background: var(#{unquote("--#{$color}-glass-hover")});
+        };
+        &:active:not(:disabled) {
+            @include active;
+            color: var(#{unquote("--#{$color}-active")});
+            background: var(#{unquote("--#{$color}-glass-active")});
+        }
+        &:disabled {
+            @include disabled
+        }
+    }
+
+    .solid-#{$color} {
+        background: var(#{unquote("--#{$color}")});
+        color: var(--text-inverse);
+        &:hover:not(:disabled) {
+            background: var(#{unquote("--#{$color}-hover")});
+        };
+        &:active:not(:disabled) {
+            @include active;
+            background: var(#{unquote("--#{$color}-active")});
+        }
+        &:disabled {
+            @include disabled;
+        }
+    }
+}
+
+.icon-only {
+    padding: 0;
+    width: 2rem;
+    border-radius: $r-xl;
+    svg, .loader {
+        margin: 0;
+    }
+}
